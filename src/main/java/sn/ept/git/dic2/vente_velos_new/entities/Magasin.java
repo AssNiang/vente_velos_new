@@ -53,6 +53,8 @@ public class Magasin implements Serializable {
     private Collection<Employe> employeCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "magasinId")
     private Collection<Commande> commandeCollection;
+    @OneToMany(mappedBy = "magasin")
+    private Collection<Stock> stockCollection;
 
     public Magasin() {
     }
@@ -123,6 +125,14 @@ public class Magasin implements Serializable {
         this.commandeCollection = commandeCollection;
     }
 
+    public Collection<Stock> getStockCollection() {
+        return stockCollection;
+    }
+
+    public void setStockCollection(Collection<Stock> stockCollection) {
+        this.stockCollection = stockCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -145,8 +155,10 @@ public class Magasin implements Serializable {
 
     @Override
     public String toString() {
-        return "Magasin{" + "id=" + id + ", nom=" + nom + ", telephone=" + telephone + ", email=" + email + ", adresse=" + adresse + ", employeCollection=" + employeCollection + ", commandeCollection=" + commandeCollection + '}';
+        return "Magasin{" + "id=" + id + ", nom=" + nom + ", telephone=" + telephone + ", email=" + email + ", adresse=" + adresse + ", employeCollection=" + employeCollection + ", commandeCollection=" + commandeCollection + ", stockCollection=" + stockCollection + '}';
     }
+
+   
 
     
     

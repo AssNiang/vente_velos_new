@@ -37,6 +37,9 @@ public class Stock implements Serializable {
     @JoinColumn(name = "PRODUIT_ID", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Produit produit;
+    @JoinColumn(name = "MAGASIN_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Magasin magasin;
 
     public Stock() {
     }
@@ -78,6 +81,14 @@ public class Stock implements Serializable {
         this.produit = produit;
     }
 
+    public Magasin getMagasin() {
+        return magasin;
+    }
+
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,10 +111,8 @@ public class Stock implements Serializable {
 
     @Override
     public String toString() {
-        return "Stock{" + "stockPK=" + stockPK + ", quantite=" + quantite + ", produit=" + produit + '}';
+        return "Stock{" + "stockPK=" + stockPK + ", quantite=" + quantite + ", produit=" + produit + ", magasin=" + magasin + '}';
     }
 
-    
-    
     
 }
